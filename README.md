@@ -1,4 +1,4 @@
-Readme AI-assistant-trader
+# Readme AI-assistant-trader
 
 ## Общие положения
 
