@@ -1,0 +1,58 @@
+@use "@/styles/variables" as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 16px;
+  background: $surface;
+  border-right: 1px solid $border;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.link {
+  padding: 10px 12px;
+  border-radius: $radius;
+  color: $muted;
+  text-decoration: none;
+
+  &:hover {
+    color: $text;
+  }
+}
+
+.active {
+  background: rgba($accent, 0.15);
+  color: $accent;
+}
+
+.logout {
+  padding: 10px;
+  border: 1px solid $border;
+  border-radius: $radius;
+  background: transparent;
+  color: $muted;
+  cursor: pointer;
+}
+
+.content {
+  padding: 24px;
+  min-width: 0; // чтобы широкие графики не распирали grid
+}
