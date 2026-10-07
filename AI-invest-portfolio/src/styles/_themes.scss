@@ -1,0 +1,61 @@
+@use './palettes/light';
+@use './palettes/dark';
+
+@mixin emit($map) {
+  @each $name, $value in $map {
+    --#{$name}: #{$value};
+  }
+}
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  @include emit(light.$tokens);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  @include emit(dark.$tokens);
+}
+
+:root {
+  // Таблицы
+  --table-background: var(--bg-surface-primary);
+  --table-header-background: var(--bg-surface-secondary);
+  --table-row-background: var(--bg-surface-primary);
+  --table-row-even-background: var(--bg-surface-secondary);
+  --table-row-hover-background: var(--bg-surface-hover);
+  --table-footer-background: var(--bg-surface-secondary);
+  --table-header-text: var(--color-secondary);
+  --table-cell-text: var(--color-primary);
+  --table-footer-text: var(--color-primary);
+  --table-header-border: var(--border-secondary);
+  --table-row-border: var(--border-tertiary);
+  --table-footer-border: var(--border-secondary);
+  --table-positive-color: var(--color-positive);
+  --table-negative-color: var(--color-negative);
+  --table-neutral-color: var(--color-secondary);
+  --table-asset-symbol-color: var(--color-primary);
+  --table-asset-name-color: var(--color-secondary);
+  --table-shadow: var(--shadow-small);
+  --table-row-hover-shadow: var(--shadow-small);
+
+  // Состояния
+  --loading-color: var(--color-secondary);
+  --loading-background: var(--bg-surface-primary);
+  --empty-state-color: var(--color-secondary);
+  --empty-state-background: var(--bg-surface-primary);
+
+  // Поля ввода
+  --input-background: var(--bg-surface-primary);
+  --input-border: var(--border-primary);
+  --input-text: var(--color-primary);
+  --input-placeholder: var(--color-tertiary);
+  --input-focus-background: var(--bg-surface-primary);
+  --input-focus-border: var(--color-accent);
+
+  // Карточки
+  --card-background: var(--bg-surface-primary);
+  --card-border: var(--border-secondary);
+  --card-shadow: var(--shadow-small);
+}

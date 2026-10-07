@@ -1,0 +1,71 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast,
+    box-shadow $transition-fast;
+
+  @include focus-ring;
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.md {
+  padding: 10px 18px;
+  font-size: $font-size-sm;
+}
+
+.sm {
+  padding: 6px 12px;
+  font-size: $font-size-xs;
+}
+
+.full {
+  width: 100%;
+}
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+
+  &:hover:not(:disabled) {
+    background: var(--color-accent-hover);
+  }
+  &:active:not(:disabled) {
+    background: var(--color-accent-active);
+  }
+}
+
+.secondary {
+  background: var(--bg-button-primary);
+  border-color: var(--border-primary);
+  color: var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--bg-button-hover);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-secondary);
+
+  &:hover:not(:disabled) {
+    background: var(--bg-surface-hover);
+    color: var(--color-primary);
+  }
+}

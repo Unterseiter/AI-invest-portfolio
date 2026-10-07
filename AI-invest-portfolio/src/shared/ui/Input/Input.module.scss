@@ -1,0 +1,43 @@
+@use '@/styles/tokens' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-secondary);
+}
+
+.input {
+  padding: 10px 12px;
+  background: var(--input-background);
+  border: 1px solid var(--input-border);
+  border-radius: $radius-md;
+  color: var(--input-text);
+  transition:
+    border-color $transition-fast,
+    box-shadow $transition-fast;
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: var(--shadow-focus);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-error);
+  }
+}
+
+.error {
+  font-size: $font-size-xs;
+  color: var(--color-error);
+}

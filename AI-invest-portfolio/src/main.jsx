@@ -1,9 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./styles/global.scss";
-import App from './app/App.jsx'
+import '@fontsource-variable/inter';
 
-createRoot(document.getElementById("root")).render(
+import App from './app/App'
+
+import "./styles/global.scss";
+import { initTheme } from '@/features/theme/model/themeStore';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('Не найден элемент #root в index.html');
+}
+
+initTheme();
+
+createRoot(rootElement).render(
   <StrictMode>
     <App />
   </StrictMode>,

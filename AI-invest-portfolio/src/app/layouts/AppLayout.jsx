@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/features/auth/model/authStore";
 import Spinner from "@/shared/ui/Spinner";
+import ThemeToggle from '@/features/theme/ui/ThemeToggle';
 import styles from "./AppLayout.module.scss";
 
 const links = [
@@ -36,9 +37,12 @@ export default function AppLayout() {
             </NavLink>
           ))}
         </nav>
-        <button className={styles.logout} onClick={handleLogout}>
-          Выйти
-        </button>
+        <div className={styles.bottom}>
+          <ThemeToggle />
+          <button className={styles.logout} onClick={handleLogout}>
+            Выйти
+          </button>
+        </div>
       </aside>
 
       <main className={styles.content}>

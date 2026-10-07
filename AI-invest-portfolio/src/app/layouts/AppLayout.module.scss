@@ -1,58 +1,108 @@
-@use "@/styles/variables" as *;
+// src/app/layouts/AppLayout.module.scss
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
 
 .layout {
   display: grid;
-  grid-template-columns: $sidebar-width 1fr;
+  grid-template-columns: 1fr;
   min-height: 100vh;
+
+  @include respond-up($bp-md) {
+    grid-template-columns: $sidebar-width 1fr;
+  }
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 20px 16px;
-  background: $surface;
-  border-right: 1px solid $border;
+  gap: $spacing-lg;
+  padding: $spacing-md;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-secondary);
+
+  @include respond-up($bp-md) {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: $spacing-lg $spacing-md;
+    border-bottom: 0;
+    border-right: 1px solid var(--border-secondary);
+  }
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 18px;
+  padding: 0 $spacing-sm;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
 }
 
 .nav {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
+  gap: $spacing-xs;
+  overflow-x: auto;
+
+  @include respond-up($bp-md) {
+    flex: 1;
+    flex-direction: column;
+    overflow: visible;
+  }
 }
 
 .link {
   padding: 10px 12px;
-  border-radius: $radius;
-  color: $muted;
-  text-decoration: none;
+  border-radius: $radius-md;
+  color: var(--color-secondary);
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
 
   &:hover {
-    color: $text;
+    background: var(--bg-surface-hover);
+    color: var(--color-primary);
+    text-decoration: none;
   }
 }
 
 .active {
-  background: rgba($accent, 0.15);
-  color: $accent;
+  background: var(--bg-button-select-primary);
+  color: var(--color-accent);
+
+  &:hover {
+    background: var(--bg-button-select-primary);
+    color: var(--color-accent);
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
 }
 
 .logout {
   padding: 10px;
-  border: 1px solid $border;
-  border-radius: $radius;
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-md;
   background: transparent;
-  color: $muted;
+  color: var(--color-secondary);
   cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    background: var(--bg-surface-hover);
+    color: var(--color-primary);
+  }
 }
 
 .content {
-  padding: 24px;
   min-width: 0; // чтобы широкие графики не распирали grid
+  padding: $spacing-md;
+
+  @include respond-up($bp-md) {
+    padding: $spacing-xl;
+  }
 }

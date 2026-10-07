@@ -1,0 +1,66 @@
+// ---------- Spacing ----------
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// ---------- Radius ----------
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 14px;
+$radius-xl: 20px;
+$radius-full: 999px;
+
+// ---------- Typography ----------
+$font-family-primary: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-family-monospace: ui-monospace, 'SF Mono', 'Roboto Mono', Consolas, monospace;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+
+// ---------- Transitions ----------
+$transition-fast: 0.15s ease;
+$transition-normal: 0.25s ease;
+$transition-slow: 0.35s ease;
+
+// ---------- Z-index ----------
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal: 1040;
+$z-popover: 1050;
+$z-tooltip: 1060;
+
+// ---------- Layout ----------
+$sidebar-width: 240px;
+$content-max-width: 1200px;
+$header-height-mobile: 56px;
+$header-height-tablet: 64px;
+$header-height-desktop: 72px;
+$footer-height: 60px;
+
+// ---------- Breakpoints ----------
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// ---------- Table sizing ----------
+$table-header-padding: 16px 12px;
+$table-header-padding-mobile: 12px 8px;
+$table-cell-padding: 14px 12px;
+$table-cell-padding-mobile: 10px 8px;
+$table-footer-padding: 18px 12px;
+$table-footer-padding-mobile: 14px 8px;
+$table-row-transition: background-color 0.2s ease, box-shadow 0.2s ease;

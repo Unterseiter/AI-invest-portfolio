@@ -1,0 +1,33 @@
+@use './tokens' as *;
+
+@mixin respond-up($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin respond-down($bp) {
+  @media (max-width: #{$bp - 1px}) {
+    @content;
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+@mixin card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: $radius-lg;
+  box-shadow: var(--card-shadow);
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

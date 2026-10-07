@@ -7,7 +7,6 @@ import ProtectedRoute from "@/features/auth/ProtectedRoute";
 import Landing from "@/pages/Landing";
 import Auth from "@/pages/Auth";
 
-// Тяжёлые страницы грузим лениво, каждая уходит в отдельный чанк
 const Portfolio = lazy(() => import("@/pages/Portfolio"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Settings = lazy(() => import("@/pages/Settings"));
