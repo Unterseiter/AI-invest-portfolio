@@ -1,0 +1,86 @@
+.group {
+    width: auto;
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-sm;
+}
+
+.option {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 12px $spacing-md;
+  background: var(--bg-surface-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: $radius-md;
+  transition:
+    border-color $transition-fast,
+    background-color $transition-fast,
+    box-shadow $transition-fast;
+
+  .option:hover & {
+    border-color: var(--border-primary);
+    background: var(--bg-surface-hover);
+  }
+}
+
+.input:checked + .body {
+  border-color: var(--color-accent);
+  background: var(--bg-button-select-primary);
+}
+
+.input:focus-visible + .body {
+  box-shadow: var(--shadow-focus);
+}
+
+.icon {
+  display: flex;
+  width: 24px;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.hint {
+  font-size: $font-size-xs;
+  color: var(--color-secondary);
+}
+
+.mark {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: 2px solid var(--border-primary);
+  border-radius: 50%;
+  transition:
+    border-color $transition-fast,
+    background-color $transition-fast;
+}
+
+.input:checked + .body .mark {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  box-shadow: inset 0 0 0 3px var(--bg-button-select-primary);
+}

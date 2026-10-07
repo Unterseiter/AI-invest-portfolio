@@ -23,7 +23,7 @@ export default function AppLayout() {
   return (
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
-        <div className={styles.logo}>AI Invest</div>
+        <div className={styles.logo}>AI Invest Portfolio</div>
         <nav className={styles.nav}>
           {links.map(({ to, label }) => (
             <NavLink
@@ -38,7 +38,7 @@ export default function AppLayout() {
           ))}
         </nav>
         <div className={styles.bottom}>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <button className={styles.logout} onClick={handleLogout}>
             Выйти
           </button>

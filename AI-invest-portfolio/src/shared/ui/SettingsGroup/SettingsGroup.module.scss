@@ -1,0 +1,25 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.group {
+  @include card;
+  padding: $spacing-lg;
+
+  @include respond-up($bp-md) {
+    padding: $spacing-xl;
+  }
+}
+
+.title {
+  font-size: $font-size-lg;
+}
+
+.description {
+  margin: $spacing-xs 0 $spacing-lg;
+  color: var(--color-secondary);
+  font-size: $font-size-sm;
+}
+
+.title:last-child {
+  margin-bottom: 0;
+}
