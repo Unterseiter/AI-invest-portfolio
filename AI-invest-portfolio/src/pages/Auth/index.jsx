@@ -14,7 +14,7 @@ export default function Auth() {
   const location = useLocation();
   const redirectTo = location.state?.from?.pathname ?? '/app';
 
-  // Заглушка: настоящий запрос к API подключим позже
+  // Заглушка на авторизацию
   const handleSubmit = (e) => {
     e.preventDefault();
     login({ name: 'Demo user' });

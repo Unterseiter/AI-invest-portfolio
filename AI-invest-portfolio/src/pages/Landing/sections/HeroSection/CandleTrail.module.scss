@@ -1,0 +1,10 @@
+// src/pages/Landing/sections/HeroSection/CandleTrail.module.scss
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.7; // подписи на осях стали читаемее; если мешает тексту, верните 0.55
+  z-index: -1;
+}
