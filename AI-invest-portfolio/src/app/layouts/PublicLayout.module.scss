@@ -50,4 +50,7 @@
   max-width: $content-max-width;
   margin: 0 auto;
   padding: $spacing-lg;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }

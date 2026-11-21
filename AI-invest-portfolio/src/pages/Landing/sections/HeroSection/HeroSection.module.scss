@@ -3,7 +3,8 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 4rem;
-  min-height: 80vh;
+  scroll-snap-align: start;
+  min-height: 100vh;
   padding: 0 2rem;
 
   @media (max-width: 768px) {
