@@ -4,7 +4,7 @@ import styles from './HeroSection.module.scss';
 
 export default function HeroSection() {
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-label='Знакомство с продуктом'>
       <CandleTrail />
       <div className={styles.content}>
         <h1 className={styles.headline}>
