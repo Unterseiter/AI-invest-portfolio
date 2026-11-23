@@ -12,8 +12,7 @@ export default function HeroSection() {
           AI подскажет, куда он движется.
         </h1>
         <p className={styles.subheadline}>
-          Вводи активы вручную. Данные хранятся только у тебя.
-          Наш AI анализирует траекторию на основе двух метрик.
+          Вводи активы вручную, прогнозируй, действуй.
         </p>
         <div className={styles.ctaGroup}>
           <Link to="/auth?mode=register" className={styles.ctaPrimary}>Попробовать</Link>
