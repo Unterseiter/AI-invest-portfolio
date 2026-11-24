@@ -2,3 +2,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.rest {
+  display: flex;
+  flex-direction: column;
+
+  // Начало этого блока: точка привязки
+  scroll-snap-align: start;
+
+  // «always» не даёт быстрым свайпом перелететь точку.
+  // Из hero вы всегда попадаете ровно на начало второй секции.
+  scroll-snap-stop: always;
+}

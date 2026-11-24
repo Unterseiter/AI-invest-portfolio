@@ -1,0 +1,31 @@
+@use './tokens' as *;
+@use './mixins' as *;
+
+// ===================== НАСТРОЙКИ =====================
+// mandatory: всегда останавливается на точке (нельзя «зависнуть» между секциями)
+// proximity: привязывается, только если вы остановились близко (мягче)
+$snap-strictness: mandatory;
+// =====================================================
+
+html[data-snap='y'] {
+  // Включает привязку по вертикали. Без этой строки snap-align у секций ничего не делает.
+  scroll-snap-type: y $snap-strictness;
+
+  // Отступ сверху = высота sticky-шапки, чтобы секция не пряталась под ней.
+  // Значения совпадают с высотой шапки в PublicLayout.
+  scroll-padding-top: $header-height-mobile;
+
+  // Плавность для программной прокрутки (якорные ссылки, scrollIntoView)
+  scroll-behavior: smooth;
+
+  @include respond-up($bp-md) {
+    scroll-padding-top: $header-height-tablet;
+  }
+}
+
+// Пользователям с отключёнными анимациями в системе плавность не нужна
+@media (prefers-reduced-motion: reduce) {
+  html[data-snap='y'] {
+    scroll-behavior: auto;
+  }
+}

@@ -8,7 +8,8 @@ export default function HeroSection() {
       <CandleTrail />
       <div className={styles.content}>
         <h1 className={styles.headline}>
-          Твой портфель под контролем.<br />
+          Твой портфель под контролем.
+          <br />
           AI подскажет, куда он движется.
         </h1>
         <p className={styles.subheadline}>
@@ -18,9 +19,6 @@ export default function HeroSection() {
           <Link to="/auth?mode=register" className={styles.ctaPrimary}>Попробовать</Link>
           <Link to="/auth" className={styles.ctaSecondary}>Войти</Link>
         </div>
-      </div>
-      <div>
-        
       </div>
     </section>
   );

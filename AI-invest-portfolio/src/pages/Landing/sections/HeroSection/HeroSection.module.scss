@@ -1,3 +1,9 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+$hero-offset-mobile: $header-height-mobile + $spacing-lg;
+$hero-offset-desktop: $header-height-tablet + $spacing-lg;
+
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;

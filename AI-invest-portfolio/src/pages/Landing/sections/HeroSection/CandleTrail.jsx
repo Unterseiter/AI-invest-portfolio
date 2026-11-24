@@ -1,16 +1,9 @@
-// src/pages/Landing/sections/HeroSection/CandleTrail.jsx
 import { useEffect, useRef } from 'react';
 import styles from './CandleTrail.module.scss';
 
-// ============================================================
-// ★ РАЗМЕР СВЕЧЕЙ ★ — единственное место, где он регулируется
-// Значения в CSS-px при масштабе страницы 100%. Масштаб браузера
-// (Ctrl +/-) уменьшает/увеличивает их сам, ничего считать не нужно.
-// ============================================================
 const CANDLE_STEP = 22; // расстояние между свечами (больше = крупнее свечи)
 const BODY_RATIO = 0.64; // толщина тела свечи как доля шага
 
-// Что показывать на фоне: поставьте false, чтобы отключить элемент
 const FEATURES = {
   grid: true,
   priceAxis: true,
@@ -19,13 +12,11 @@ const FEATURES = {
   movingAverage: true,
   forecastCone: true,
   endMarker: true,
-};
+}; // элементы что показываются на фоне
 
-// Хаотичность графика
-const JUMP_CHANCE = 0.1; // шанс резкого скачка/обвала на одной свече
-const MA_PERIOD = 8; // период скользящей средней
+const JUMP_CHANCE = 0.5; 
+const MA_PERIOD = 8;
 
-// Раскладка
 const PAD_L = 24; // отступ слева
 const PAD_R = 68; // справа место под шкалу цены
 const AXIS_H = 24; // снизу место под шкалу времени
@@ -34,7 +25,6 @@ const GRID_COLS = 6; // вертикальная линия сетки кажд�
 const END_LEVELS = [0.14, 0.5, 0.86]; // верх / середина / низ
 const END_SWITCH_MS = 6000;
 
-// Перевод «внутренних единиц» в красивую цену для подписей
 const BASE_PRICE = 1000;
 const PRICE_PER_UNIT = 6;
 const FONT = '11px ui-monospace, SFMono-Regular, Consolas, monospace';
@@ -49,37 +39,31 @@ function gauss() {
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * Math.random());
 }
 
-// Время под свечой (фейковое, 5-минутные свечи с 09:00)
 function timeLabel(i) {
   const m = 9 * 60 + i * 5;
   return `${pad2(Math.floor(m / 60) % 24)}:${pad2(m % 60)}`;
 }
 
-// Дописывает свечи в конец массива. Данные создаются один раз и не меняются.
 function extendSeries(series, count) {
   const prev = series[series.length - 1];
   let price = prev ? prev.close : 0;
   let drift = prev ? prev.drift : 0;
-  let regime = prev ? prev.regime : 1; // «настроение рынка»: спокойно / нервно
+  let regime = prev ? prev.regime : 1; 
   let f = prev ? prev.f : 0;
 
   while (series.length < count) {
-    // Кластеры волатильности: нервные участки сменяются спокойными
     regime = regime * 0.85 + (0.5 + Math.abs(gauss()) * 1.1) * 0.15;
     drift = drift * 0.55 + gauss() * 0.5 * regime;
 
-    // Редкий резкий скачок или обвал
     const jump = Math.random() < JUMP_CHANCE ? sign() * (3 + Math.random() * 4) : 0;
 
     const open = price;
     const close = open + drift + gauss() * 0.9 * regime + jump - open * 0.035; // -open*0.035: возврат к среднему
     const bodySize = Math.abs(close - open);
 
-    // Шум прогноза: резче, чем раньше, тоже с редкими скачками
     f = f * 0.5 + gauss() * 1.4 * regime;
     if (Math.random() < JUMP_CHANCE) f += sign() * (3 + Math.random() * 4);
 
-    // Фитили: чаще короткие, иногда длинные
     const longWick = () => (Math.random() < 0.12 ? 1.5 + Math.random() * 2.5 : 0);
 
     series.push({
@@ -140,8 +124,7 @@ export default function CandleTrail() {
     let last = 0;
     let visible = true;
 
-    // ---------- вспомогательные ----------
-    const pxPerUnit = () => clamp(size.h / 100, 4, 9); // вертикальный масштаб графика
+    const pxPerUnit = () => clamp(size.h / 100, 4, 9);
     const lastCol = () =>
       Math.max(1, Math.floor((size.w - PAD_L - PAD_R - size.body) / size.step));
     const headCol = () => clamp(Math.round((s.headX - PAD_L) / size.step), 0, lastCol());
