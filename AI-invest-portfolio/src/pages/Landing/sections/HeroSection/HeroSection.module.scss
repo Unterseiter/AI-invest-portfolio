@@ -10,7 +10,7 @@ $hero-offset-desktop: $header-height-tablet + $spacing-lg;
   margin: 15vh 0 0 0;
   gap: 4rem;
   scroll-snap-align: start;
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 0 2rem;
 
   @media (max-width: 768px) {
