@@ -1,0 +1,9 @@
+# Skills агента (локальные, устанавливаются вручную)
+.agents/
+frontend-visual-check.skill
+
+# Мусорка
+trash/
+
+# Скриншоты и изображения из AI-images
+AI-images/

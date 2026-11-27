@@ -21,9 +21,9 @@ const FEATURES = [
   },
 ];
 
-export default function FeaturesSection() {
+export default function FeaturesSection({ ref }) {
   return (
-    <section className={styles.section} aria-labelledby="features-title">
+    <section ref={ref} className={styles.section} aria-labelledby="features-title">
       <div className={styles.container}>
         <header className={styles.header}>
           <h2 id="features-title" className={styles.title}>

@@ -24,6 +24,4 @@ dist-ssr
 *.sw?
 
 # .prettierignore
-node_modules
-dist
 package-lock.json

@@ -1,90 +1,82 @@
 @use '@/styles/tokens' as *;
 @use '@/styles/mixins' as *;
 
-$hero-offset-mobile: $header-height-mobile + $spacing-lg;
-$hero-offset-desktop: $header-height-tablet + $spacing-lg;
-
+// Свечи CandleTrail — фон на ВЕСЬ экран (canvas: absolute inset 0, z-index: -1).
+// Секция заползает под полупрозрачную sticky-шапку (отрицательный margin-top = её высоте)
+// и тянется на полную высоту вьюпорта. 100dvh с фолбэком на 100vh — для мобильных
+// браузеров со сворачивающимся URL-баром.
 .hero {
+  position: relative;
+  isolation: isolate; // свой stacking-контекст, чтобы canvas с z-index: -1 не уходил под фон страницы
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 15vh 0 0 0;
-  gap: 4rem;
-  scroll-snap-align: start;
-  min-height: 80vh;
-  padding: 0 2rem;
+  align-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin-top: -$header-height-mobile;
+  // Фон (canvas) — во весь экран, а контент выровнен по центральной колонке 1200px,
+  // как на остальных страницах. На узких экранах — просто боковой отступ.
+  padding: $spacing-xl max($spacing-lg, calc((100% - $content-max-width) / 2 + $spacing-lg));
+  overflow: hidden;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1rem;
-    min-height: auto;
+  @include respond-up($bp-md) {
+    margin-top: -$header-height-tablet;
   }
 }
 
-.heroContent {
+// Текст поверх canvas: z-index вывели вверх внутри stacking-контекста hero
+.content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: flex-start;
+  gap: $spacing-lg;
+  max-width: 640px;
 }
 
 .headline {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp($font-size-2xl, 5vw, 3.5rem);
   line-height: 1.1;
-  font-weight: 700;
-  margin: 0 0 1rem 0;
+  font-weight: $font-weight-bold;
 }
 
 .subheadline {
-  font-size: 1.125rem;
+  font-size: $font-size-lg;
   line-height: 1.6;
   color: var(--color-secondary);
   max-width: 50ch;
-  margin: 0 0 1.5rem 0;
 }
 
 .ctaGroup {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: $spacing-md;
 }
 
 .ctaPrimary {
   padding: 0.875rem 1.75rem;
   background: var(--color-accent);
-  color: white;
-  border-radius: 8px;
-  font-weight: 600;
+  color: var(--color-on-accent, #fff);
+  border-radius: $radius-sm;
+  font-weight: $font-weight-semibold;
   text-decoration: none;
-  transition: opacity 150ms;
-  
-  &:hover { opacity: 0.9; }
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .ctaSecondary {
   padding: 0.875rem 1.75rem;
   border: 1px solid var(--border-primary);
-  border-radius: 8px;
-  font-weight: 500;
+  border-radius: $radius-sm;
+  font-weight: $font-weight-medium;
   text-decoration: none;
   color: inherit;
-  
-  &:hover { background: var(--bg-surface-hover); }
-}
+  transition: background-color $transition-fast;
 
-.heroVisual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.visualPlaceholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 16px;
-  border: 1px dashed var(--border-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-secondary);
-  font-size: 0.875rem;
+  &:hover {
+    background: var(--bg-surface-hover);
+  }
 }

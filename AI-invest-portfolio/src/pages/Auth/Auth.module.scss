@@ -4,6 +4,7 @@
 .wrap {
   max-width: 420px;
   margin: $spacing-xl auto 0;
+  padding-inline: $spacing-lg;
 
   @include respond-up($bp-md) {
     margin-top: $spacing-2xl;

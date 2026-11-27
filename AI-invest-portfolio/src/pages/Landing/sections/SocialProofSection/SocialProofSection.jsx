@@ -7,9 +7,9 @@ const STATS = [
   { value: '0', label: 'трекеров и передачи данных третьим лицам' },
 ];
 
-export default function SocialProofSection() {
+export default function SocialProofSection({ ref }) {
   return (
-    <section className={styles.section} aria-label="Ключевые факты о продукте">
+    <section ref={ref} className={styles.section} aria-label="Ключевые факты о продукте">
       <ul className={styles.stats}>
         {STATS.map(({ value, label }) => (
           <li key={label} className={styles.stat}>
