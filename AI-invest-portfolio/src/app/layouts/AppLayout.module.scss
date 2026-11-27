@@ -51,6 +51,8 @@
 .link {
   padding: 10px 12px;
   border-radius: $radius-md;
+  border-bottom: none;
+  text-decoration: none;
   color: var(--color-secondary);
   font-weight: $font-weight-medium;
   white-space: nowrap;

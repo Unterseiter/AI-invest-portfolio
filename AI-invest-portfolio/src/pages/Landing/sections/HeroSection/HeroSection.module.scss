@@ -56,8 +56,9 @@
 .ctaPrimary {
   padding: 0.875rem 1.75rem;
   background: var(--color-accent);
-  color: var(--color-on-accent, #fff);
+  color: var(--color-on-accent);
   border-radius: $radius-sm;
+  border-bottom: none;
   font-weight: $font-weight-semibold;
   text-decoration: none;
   transition: opacity $transition-fast;
@@ -71,6 +72,7 @@
   padding: 0.875rem 1.75rem;
   border: 1px solid var(--border-primary);
   border-radius: $radius-sm;
+  border-bottom: none;
   font-weight: $font-weight-medium;
   text-decoration: none;
   color: inherit;

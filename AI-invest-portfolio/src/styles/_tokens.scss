@@ -7,16 +7,18 @@ $spacing-xl: 32px;
 $spacing-2xl: 48px;
 
 // ---------- Radius ----------
-$radius-sm: 6px;
-$radius-md: 10px;
-$radius-lg: 14px;
-$radius-xl: 20px;
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 10px;
+$radius-xl: 14px;
 $radius-full: 999px;
 
 // ---------- Typography ----------
 $font-family-primary: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-$font-family-monospace: ui-monospace, 'SF Mono', 'Roboto Mono', Consolas, monospace;
+$font-family-monospace: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', 'Roboto Mono', Consolas, monospace;
 
+// Мелкий UI-текст и числовые данные — моноширинный, капс с разрядкой
+$font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
@@ -28,6 +30,8 @@ $font-size-md: 1rem;
 $font-size-lg: 1.125rem;
 $font-size-xl: 1.5rem;
 $font-size-2xl: 2rem;
+
+$letter-spacing-caps: 0.08em;
 
 // ---------- Transitions ----------
 $transition-fast: 0.15s ease;

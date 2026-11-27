@@ -31,9 +31,12 @@
   color: var(--color-primary);
   font-weight: $font-weight-bold;
   font-size: $font-size-lg;
+  border-bottom: none;
+  text-decoration: none;
 
   &:hover {
     color: var(--color-primary);
+    border-bottom: none;
     text-decoration: none;
   }
 }

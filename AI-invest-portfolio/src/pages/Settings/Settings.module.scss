@@ -1,18 +1,11 @@
-
-.page {
-//   max-width: ;
-}
+@use '@/styles/tokens' as *;
 
 .header {
   margin-bottom: $spacing-lg;
 }
 
 .sectionTitle {
-    margin: 0 0 15px 0;
-}
-
-.section {
-    padding: 0 0 0 $spacing-xl;
+  margin: 0 0 $spacing-md;
 }
 
 .tabs {
@@ -60,4 +53,3 @@
   color: var(--color-secondary);
   font-size: $font-size-sm;
 }
-

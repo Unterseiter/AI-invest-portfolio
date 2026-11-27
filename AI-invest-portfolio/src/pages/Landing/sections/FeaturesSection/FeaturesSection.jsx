@@ -17,7 +17,7 @@ const FEATURES = [
     id: 'privacy',
     title: 'Ваши данные остаются вашими',
     description:
-      'Информация',
+      'Портфель хранится локально в вашем браузере. Никаких аккаунтов с серверами, никто не видит ваши позиции — кроме вас.',
   },
 ];
 
@@ -35,9 +35,11 @@ export default function FeaturesSection({ ref }) {
         </header>
 
         <ul className={styles.grid}>
-          {FEATURES.map(({ id, title, description }) => (
+          {FEATURES.map(({ id, title, description }, index) => (
             <li key={id} className={styles.card}>
-              <div className={styles.cardIcon} aria-hidden="true" />
+              <span className={styles.cardIndex} aria-hidden="true">
+                0{index + 1}
+              </span>
               <h3 className={styles.cardTitle}>{title}</h3>
               <p className={styles.cardText}>{description}</p>
             </li>

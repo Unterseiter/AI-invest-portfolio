@@ -1,4 +1,6 @@
-.row{
-    display: flex;
-    gap: 15px;
+@use '@/styles/tokens' as *;
+
+.row {
+  display: flex;
+  gap: $spacing-md;
 }

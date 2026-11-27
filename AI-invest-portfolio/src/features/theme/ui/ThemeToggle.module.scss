@@ -42,10 +42,13 @@
   padding: 0;
   background: transparent;
   border: 1px solid var(--border-primary);
-  border-radius: 8px;
+  border-radius: $radius-md;
   color: var(--color-secondary);
   cursor: pointer;
-  transition: background-color 150ms, color 150ms, border-color 150ms;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    border-color $transition-fast;
 
   &:hover {
     background: var(--bg-surface-hover);
