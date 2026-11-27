@@ -1,42 +1,106 @@
 @use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
 
+// Полноэкранная секция: контент по центру, сплит «заголовок | цифры»
 .section {
-  padding: 4rem 2rem;
-  border-top: 1px solid var(--border-secondary);
-  border-bottom: 1px solid var(--border-secondary);
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: $spacing-2xl $spacing-lg;
 }
 
-.stats {
+.inner {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  width: 100%;
   max-width: $content-max-width;
   margin: 0 auto;
+
+  @include respond-up($bp-lg) {
+    grid-template-columns: 5fr 7fr;
+    gap: $spacing-2xl;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  font-family: $font-family-monospace;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-caps;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: clamp($font-size-xl, 3vw, 2.5rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  line-height: 1.6;
+  color: var(--color-secondary);
+  max-width: 36ch;
+}
+
+// Сетка фактов: 2×2, строки разделены hairline-линиями — как выписка из терминала
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0;
   padding: 0;
   list-style: none;
 
-  @media (max-width: 768px) {
+  @include respond-up($bp-sm) {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: $spacing-sm;
+  padding: $spacing-lg $spacing-lg $spacing-lg 0;
+
+  @include respond-up($bp-sm) {
+    &:nth-child(odd) {
+      border-right: 1px solid var(--border-secondary);
+      padding-right: $spacing-lg;
+    }
+
+    &:nth-child(even) {
+      padding-left: $spacing-lg;
+      padding-right: 0;
+    }
+
+    &:nth-child(-n + 2) {
+      border-bottom: 1px solid var(--border-secondary);
+    }
+  }
+
+  @include respond-down($bp-sm) {
+    border-bottom: 1px solid var(--border-secondary);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
 }
 
 .value {
   font-family: $font-family-monospace;
   font-variant-numeric: tabular-nums;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: $font-weight-bold;
   line-height: 1;
   color: var(--color-accent);
@@ -44,7 +108,7 @@
 
 .label {
   font-size: $font-size-sm;
-  line-height: 1.4;
+  line-height: 1.5;
   color: var(--color-secondary);
-  max-width: 20ch;
+  max-width: 24ch;
 }

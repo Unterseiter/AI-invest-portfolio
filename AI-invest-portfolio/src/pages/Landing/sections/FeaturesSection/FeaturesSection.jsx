@@ -24,8 +24,9 @@ const FEATURES = [
 export default function FeaturesSection({ ref }) {
   return (
     <section ref={ref} className={styles.section} aria-labelledby="features-title">
-      <div className={styles.container}>
+      <div className={styles.inner}>
         <header className={styles.header}>
+          <span className={styles.eyebrow}>Возможности</span>
           <h2 id="features-title" className={styles.title}>
             Что вы получаете
           </h2>
@@ -36,7 +37,7 @@ export default function FeaturesSection({ ref }) {
 
         <ul className={styles.grid}>
           {FEATURES.map(({ id, title, description }, index) => (
-            <li key={id} className={styles.card}>
+            <li key={id} className={styles.item}>
               <span className={styles.cardIndex} aria-hidden="true">
                 0{index + 1}
               </span>

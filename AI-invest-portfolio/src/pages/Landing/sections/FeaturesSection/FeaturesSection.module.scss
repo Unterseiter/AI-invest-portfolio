@@ -1,53 +1,98 @@
 @use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
 
+// Полноэкранная секция: заголовок сверху, колонки с hairline-разделителями
 .section {
-  padding: 6rem 2rem;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: $spacing-2xl $spacing-lg;
 }
 
-.container {
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  width: 100%;
   max-width: $content-max-width;
   margin: 0 auto;
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  font-family: $font-family-monospace;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-caps;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 .title {
   font-size: clamp($font-size-xl, 3vw, 2.5rem);
   font-weight: $font-weight-bold;
-  margin: 0 0 $spacing-sm;
+  line-height: 1.15;
 }
 
 .subtitle {
   font-size: $font-size-lg;
+  line-height: 1.6;
   color: var(--color-secondary);
   max-width: 50ch;
-  margin: 0 auto;
 }
 
+// Три колонки, разделённые вертикальными линиями — строже, чем карточки
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
   margin: 0;
   padding: 0;
   list-style: none;
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
+  @include respond-up($bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
   }
 }
 
-.card {
+.item {
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
-  padding: 2rem;
-  background: var(--bg-surface-primary);
-  border: 1px solid var(--border-secondary);
-  border-radius: $radius-lg;
+  padding: $spacing-lg 0;
+
+  @include respond-up($bp-lg) {
+    padding: $spacing-lg $spacing-xl;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    & + & {
+      border-left: 1px solid var(--border-secondary);
+    }
+  }
+
+  @include respond-down($bp-lg) {
+    border-top: 1px solid var(--border-secondary);
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+  }
 }
 
 .cardIndex {

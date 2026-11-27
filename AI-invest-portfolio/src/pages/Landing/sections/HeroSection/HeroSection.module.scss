@@ -1,20 +1,14 @@
 @use '@/styles/tokens' as *;
 @use '@/styles/mixins' as *;
 
-// Свечи CandleTrail — фон на ВЕСЬ экран (canvas: absolute inset 0, z-index: -1).
-// Секция заползает под полупрозрачную sticky-шапку (отрицательный margin-top = её высоте)
-// и тянется на полную высоту вьюпорта. 100dvh с фолбэком на 100vh — для мобильных
-// браузеров со сворачивающимся URL-баром.
 .hero {
   position: relative;
-  isolation: isolate; // свой stacking-контекст, чтобы canvas с z-index: -1 не уходил под фон страницы
+  isolation: isolate; 
   display: grid;
   align-content: center;
   min-height: 100vh;
   min-height: 100dvh;
   margin-top: -$header-height-mobile;
-  // Фон (canvas) — во весь экран, а контент выровнен по центральной колонке 1200px,
-  // как на остальных страницах. На узких экранах — просто боковой отступ.
   padding: $spacing-xl max($spacing-lg, calc((100% - $content-max-width) / 2 + $spacing-lg));
   overflow: hidden;
 
@@ -34,6 +28,16 @@
   max-width: 640px;
 }
 
+// Подводка над заголовком: моноширинный капс с разрядкой
+.eyebrow {
+  font-family: $font-family-monospace;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-caps;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
 .headline {
   font-size: clamp($font-size-2xl, 5vw, 3.5rem);
   line-height: 1.1;
@@ -50,36 +54,34 @@
 .ctaGroup {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-md;
+  align-items: center;
+  gap: $spacing-lg;
 }
 
+// Основное действие — строгая заливка акцентом
 .ctaPrimary {
   padding: 0.875rem 1.75rem;
-  background: var(--bg-button-select-primary);
-  color: var(--color-primary);
+  background: var(--bg-select-primary);
+  color: var(--color-on-accent);
   border-radius: $radius-sm;
   border-bottom: none;
   font-weight: $font-weight-semibold;
   text-decoration: none;
-  transition: opacity $transition-slow;
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-.ctaSecondary {
-  padding: 0.875rem 1.75rem;
-  background: var(--bg-button-primary);
-  border: 1px solid var(--border-primary);
-  border-radius: $radius-sm;
-  border-bottom: none;
-  font-weight: $font-weight-medium;
-  text-decoration: none;
-  color: inherit;
   transition: background-color $transition-slow;
 
   &:hover {
-    background: var(--bg-surface-hover);
+    filter: brightness(1.2);
+    background: var(--bg-select-primary);
+    color: var(--color-on-accent);
+  }
+}
+
+// Вторичное действие — текстовая ссылка с пунктирным подчёркиванием (глобальный стиль ссылок)
+.ctaSecondary {
+  font-weight: $font-weight-medium;
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
