@@ -55,13 +55,13 @@
 
 .ctaPrimary {
   padding: 0.875rem 1.75rem;
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  background: var(--bg-button-select-primary);
+  color: var(--color-primary);
   border-radius: $radius-sm;
   border-bottom: none;
   font-weight: $font-weight-semibold;
   text-decoration: none;
-  transition: opacity $transition-fast;
+  transition: opacity $transition-slow;
 
   &:hover {
     opacity: 0.9;
@@ -70,13 +70,14 @@
 
 .ctaSecondary {
   padding: 0.875rem 1.75rem;
+  background: var(--bg-button-primary);
   border: 1px solid var(--border-primary);
   border-radius: $radius-sm;
   border-bottom: none;
   font-weight: $font-weight-medium;
   text-decoration: none;
   color: inherit;
-  transition: background-color $transition-fast;
+  transition: background-color $transition-slow;
 
   &:hover {
     background: var(--bg-surface-hover);

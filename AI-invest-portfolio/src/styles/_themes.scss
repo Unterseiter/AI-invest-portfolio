@@ -1,5 +1,8 @@
 @use './palettes/light';
 @use './palettes/dark';
+@use './palettes/cyberp';
+@use './palettes/paper';
+@use './palettes/espresso';
 
 @mixin emit($map) {
   @each $name, $value in $map {
@@ -7,6 +10,7 @@
   }
 }
 
+// Строгие темы по умолчанию: «Banker's Paper» (светлая) и «Terminal» (тёмная)
 :root,
 [data-theme='light'] {
   color-scheme: light;
@@ -16,6 +20,23 @@
 [data-theme='dark'] {
   color-scheme: dark;
   @include emit(dark.$tokens);
+}
+
+// Киберпанк (тёмная)
+[data-theme='cyberp'] {
+  color-scheme: dark;
+  @include emit(cyberp.$tokens);
+}
+
+// Альтернативные тёплые темы «Paper Ledger»
+[data-theme='paper'] {
+  color-scheme: light;
+  @include emit(paper.$tokens);
+}
+
+[data-theme='espresso'] {
+  color-scheme: dark;
+  @include emit(espresso.$tokens);
 }
 
 :root {

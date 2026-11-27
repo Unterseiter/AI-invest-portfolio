@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-const STORAGE_KEY = 'theme-mode'; // 'light' | 'dark' | 'system'
-const MODES = ['light', 'dark', 'system'];
+const STORAGE_KEY = 'theme-mode'; // 'light' | 'dark' | 'cyberp' | 'system'
+const MODES = ['light', 'dark', 'cyberp', 'system'];
 
 const systemQuery = () => window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -14,13 +14,16 @@ const readMode = () => {
   }
 };
 
-const resolveTheme = (mode) =>
+// Какая палитра реально применяется (значение data-theme)
+const resolveDataset = (mode) =>
   mode === 'system' ? (systemQuery().matches ? 'dark' : 'light') : mode;
 
+// Тема для потребителей (графики): только 'light' | 'dark'
+const resolveTheme = (mode) => (resolveDataset(mode) === 'light' ? 'light' : 'dark');
+
 const apply = (mode) => {
-  const resolved = resolveTheme(mode);
-  document.documentElement.dataset.theme = resolved;
-  useThemeStore.setState({ resolved });
+  document.documentElement.dataset.theme = resolveDataset(mode);
+  useThemeStore.setState({ resolved: resolveTheme(mode) });
 };
 
 export const useThemeStore = create((set) => ({

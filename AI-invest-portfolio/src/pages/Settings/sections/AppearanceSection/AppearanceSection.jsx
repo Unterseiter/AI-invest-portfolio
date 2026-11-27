@@ -5,8 +5,11 @@ import styles from './AppearanceSection.module.scss';
 
 
 const THEME_OPTIONS = [
-  { value: 'light', label: 'Светлая', hint: 'Всегда светлое оформление' },
-  { value: 'dark', label: 'Тёмная', hint: 'Всегда тёмное оформление' },
+  { value: 'light', label: 'Светлая', hint: 'Строгая деловая светлая тема' },
+  { value: 'dark', label: 'Тёмная', hint: 'Терминал трейдера: чёрный и янтарь' },
+  { value: 'cyberp', label: 'Киберпанк', hint: 'Неоновая тёмная тема' },
+  { value: 'paper', label: 'Бумага', hint: '---' },
+  { value: 'espresso', label: 'Еспрессо темная', hint: '---' },
   { value: 'system', label: 'Системная', hint: 'Следует настройкам вашей ОС' },
 ];
 

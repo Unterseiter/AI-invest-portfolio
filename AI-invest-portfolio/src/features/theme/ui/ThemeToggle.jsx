@@ -1,5 +1,5 @@
 import { useThemeStore } from '../model/themeStore';
-import { SunIcon, MoonIcon, SystemIcon } from '@/assets/svg/ThemeIcons.jsx';
+import { SunIcon, MoonIcon, CyberpunkIcon, SystemIcon } from '@/assets/svg/ThemeIcons.jsx';
 import styles from './ThemeToggle.module.scss';
 
 const MODES = [
